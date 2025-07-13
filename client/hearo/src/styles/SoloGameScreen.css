@@ -1,0 +1,95 @@
+.solo_container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.solo_back_button {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+  transform: rotate(-90deg);
+  border: none;
+}
+
+.solo_back_button:hover {
+  color: #4fbf55;
+  transition: color 0.3s;
+  border: none;
+}
+
+.solo_title {
+  margin-top: 2rem;
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #09271c;
+}
+
+audio::-webkit-media-controls-play-button {
+  background-color: #99ed8d;
+  border-radius: 50%;
+  transform: scale(0.7);
+}
+
+audio::-webkit-media-controls-time-remaining-display,
+audio::-webkit-media-controls-current-time-display {
+  color: white;
+}
+
+audio {
+  width: 30rem;
+  height: 2rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.time_button {
+  height: 3rem;
+  width: 10rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #09271c;
+  color: #99ed8d;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.time_button:hover {
+  background-color: #4fbf55;
+  color: #fff;
+  scale: 1.1;
+  transition: background-color 0.3s, color 0.3s, scale 0.2s;
+}
+
+.guess_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.guess_input {
+  width: 20rem;
+  height: 2.5rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: white;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
