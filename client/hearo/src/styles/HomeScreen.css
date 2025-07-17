@@ -1,18 +1,16 @@
 .home_container {
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 3rem;
 }
 
 .home_title {
-  margin-top: 3rem;
   font-size: 4rem;
 }
 
 .home_subtitle {
-  margin-top: 3rem;
   font-size: 2rem;
 }
 
@@ -21,7 +19,8 @@
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  margin: auto 0;
+  justify-content: center;
+  width: 20%;
 }
 
 .home_button_panel button {
@@ -47,7 +46,6 @@
 }
 
 .home_footer_note {
-  margin-bottom: 3rem;
   font-size: 0.8rem;
   text-align: center;
   font-style: italic;
