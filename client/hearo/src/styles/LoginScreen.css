@@ -164,6 +164,7 @@ form {
   flex-direction: column;
   gap: 1.5rem;
   font-size: large;
+  width: 90%;
 }
 
 p {
@@ -215,6 +216,9 @@ button {
 
 .error {
   color: rgb(235, 117, 117);
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .sr-only {
@@ -292,14 +296,14 @@ h2 {
   height: 42px;
   border-radius: 50%;
   border: unset;
-  border: 2px dashed var(--c2);
+  border: 3px dashed var(--c2);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .color_button:hover {
   scale: 1.05;
-  border: 2px dashed var(--c1);
+  border: 3px dashed var(--c1);
   animation: rotate360 2s ease-in-out;
   animation-iteration-count: infinite;
 }

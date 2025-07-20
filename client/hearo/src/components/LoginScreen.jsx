@@ -1,12 +1,64 @@
 import "../styles/LoginScreen.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 export function LoginScreen() {
+  const url =
+    "https://urban-zebra-9gggpqx9g5qc7qgq-5000.app.github.dev/api/auth/login";
   const navigate = useNavigate();
-  const [color, setColor] = useState("#FF4081");
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    color: "#FF4081",
+    user: "",
+  });
   const [openRegister, setOpenRegister] = useState(false);
   const [openColors, setOpenColors] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmitLogin(e) {
+    e.preventDefault();
+
+    if (!form.email || !form.password) {
+      setErrorMessage(
+        "Por favor complete todos los campos para iniciar sesion."
+      );
+      return;
+    } else {
+      try {
+        const res = await axios.post(url, form);
+      } catch (error) {
+        console.error("Error al iniciar sesion:", error);
+        setErrorMessage(
+          "Error al comunicarse con el servidor, intente de nuevo."
+        );
+        console.log(form);
+      }
+    }
+  }
+
+  async function handleSubmitRegister(e) {
+    e.preventDefault();
+
+    if (!form.user || !form.color) {
+      setErrorMessage("Por favor complete todos los campos para registrarse.");
+      return;
+    } else {
+      try {
+        const res = await axios.post(url, form);
+      } catch (error) {
+        console.error("Error al completar el registro:", error);
+        setErrorMessage(
+          "Error al comunicarse con el servidor, intente de nuevo."
+        );
+      }
+    }
+  }
 
   const colorOptions = [
     "#FF4081", // Rosa fuerte
@@ -37,7 +89,7 @@ export function LoginScreen() {
       <h1>🔊Hearo</h1>
       <div className="contenedor_login">
         <h2>Bienvenidx a Hearo!</h2>
-        <form>
+        <form onSubmit={handleSubmitLogin}>
           <label for="email" className="sr-only">
             Email
           </label>
@@ -46,7 +98,7 @@ export function LoginScreen() {
             name="email"
             id="email"
             placeholder="Introduzca su correo electronico"
-            required
+            onChange={handleChange}
           ></input>
           <label for="password" className="sr-only">
             Password
@@ -56,25 +108,32 @@ export function LoginScreen() {
             name="password"
             id="password"
             placeholder="Introduzca su contraseña"
-            required
+            onChange={handleChange}
           ></input>
           <div className="button_container">
-            <button
-              className="button_join"
-              type="button"
-              onClick={() => navigate("/home")}
-            >
+            <button className="button_join" type="submit">
               Iniciar Sesion
             </button>
             <button
               className="button_register"
               type="button"
-              onClick={() => setOpenRegister(true)}
+              onClick={() => {
+                if (!form.email || (!form.password && !openRegister)) {
+                  setErrorMessage(
+                    "Por favor complete todos los campos para registrarse."
+                  );
+                } else {
+                  setErrorMessage("");
+                  setOpenRegister(true);
+                }
+              }}
             >
               Registrarse
             </button>
           </div>
-          <p className="error escondido">Usuario no registrado!</p>
+          <p className={errorMessage && !openRegister ? "error" : "escondido"}>
+            {errorMessage}
+          </p>
           <p>Tu puntuacion y racha se guardara automaticamente!</p>
         </form>
 
@@ -93,7 +152,7 @@ export function LoginScreen() {
                     id="user"
                     maxLength={16}
                     placeholder="Selecciona tu apodo"
-                    required
+                    onChange={handleChange}
                   ></input>
                   <label for="color" className="sr-only">
                     Color
@@ -102,19 +161,16 @@ export function LoginScreen() {
                     className="color_button"
                     type="button"
                     onClick={() => setOpenColors(true)}
-                    style={{ backgroundColor: color }}
+                    style={{ backgroundColor: form.color }}
                   ></button>
                 </div>
-                <p className="error escondido">
-                  Ya existe un usuario con ese apodo!
+                <p className={errorMessage ? "error" : "escondido"}>
+                  {errorMessage}
                 </p>
                 <button
                   className="submit_button"
                   type="button"
-                  onClick={() => {
-                    setOpenRegister(false);
-                    navigate("/home");
-                  }}
+                  onClick={handleSubmitRegister}
                 >
                   Completar Registro
                 </button>
@@ -130,15 +186,18 @@ export function LoginScreen() {
               <div className="contenedor_colores">
                 {colorOptions.map((option, i) => (
                   <button
+                    value={option}
+                    name="color"
                     key={option}
                     className="color_option"
                     style={{
                       backgroundColor: option,
                       animationDelay: `${i * 0.08}s`,
                     }}
-                    onClick={() => {
-                      setColor(option);
+                    onClick={(e) => {
+                      handleChange(e);
                       setOpenColors(false);
+                      console.log(form);
                     }}
                   ></button>
                 ))}
