@@ -31,7 +31,7 @@ export function LoginScreen() {
       return;
     } else {
       try {
-        const res = await axios.post(url, form);
+        const res = await axios.post(url, form, { withCredentials: true });
       } catch (error) {
         console.error("Error al iniciar sesion:", error);
         setErrorMessage(
@@ -50,7 +50,7 @@ export function LoginScreen() {
       return;
     } else {
       try {
-        const res = await axios.post(url, form);
+        const res = await axios.post(url, form, { withCredentials: true });
       } catch (error) {
         console.error("Error al completar el registro:", error);
         setErrorMessage(
