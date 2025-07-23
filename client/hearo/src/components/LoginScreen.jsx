@@ -32,12 +32,11 @@ export function LoginScreen() {
     } else {
       try {
         const res = await axios.post(url, form, { withCredentials: true });
+        console.log(res.data.message);
+        navigate("/home");
       } catch (error) {
         console.error("Error al iniciar sesion:", error);
-        setErrorMessage(
-          "Error al comunicarse con el servidor, intente de nuevo."
-        );
-        console.log(form);
+        setErrorMessage(error.response.data.message);
       }
     }
   }
@@ -51,11 +50,11 @@ export function LoginScreen() {
     } else {
       try {
         const res = await axios.post(url, form, { withCredentials: true });
+        console.log(res.data.message);
+        navigate("/home");
       } catch (error) {
         console.error("Error al completar el registro:", error);
-        setErrorMessage(
-          "Error al comunicarse con el servidor, intente de nuevo."
-        );
+        setErrorMessage(error.response.data.message);
       }
     }
   }

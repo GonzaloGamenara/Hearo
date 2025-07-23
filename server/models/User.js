@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "#FF4081",
   },
-  nick: {
+  user: {
     type: String,
     required: true,
     unique: true,
