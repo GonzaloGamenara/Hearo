@@ -4,8 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 
 export function LoginScreen() {
-  const url =
-    "https://urban-zebra-9gggpqx9g5qc7qgq-5000.app.github.dev/api/auth/login";
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
@@ -31,7 +31,9 @@ export function LoginScreen() {
       return;
     } else {
       try {
-        const res = await axios.post(url, form, { withCredentials: true });
+        const res = await axios.post(`${API_URL}/auth/login`, form, {
+          withCredentials: true,
+        });
         console.log(res.data.message);
         navigate("/home");
       } catch (error) {
@@ -49,7 +51,9 @@ export function LoginScreen() {
       return;
     } else {
       try {
-        const res = await axios.post(url, form, { withCredentials: true });
+        const res = await axios.post(`${API_URL}/auth/login`, form, {
+          withCredentials: true,
+        });
         console.log(res.data.message);
         navigate("/home");
       } catch (error) {

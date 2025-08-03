@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const url =
-  "mongodb+srv://gonzagamenara:yoDVhYxam3FEhXrs@cluster0.lcnbabp.mongodb.net/hearo?retryWrites=true&w=majority&appName=Cluster0";
+dotenv.config();
+
+const url = process.env.DB_SECRET;
 
 export async function connectDB() {
   try {

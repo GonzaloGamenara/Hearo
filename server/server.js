@@ -4,6 +4,8 @@ import authRoutes from "./routes/authRoutes.js";
 import { connectDB } from "./config/db.js";
 import cors from "cors";
 
+const url_origen = "https://urban-zebra-9gggpqx9g5qc7qgq-5173.app.github.dev";
+
 dotenv.config();
 
 await connectDB();
@@ -15,14 +17,12 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://urban-zebra-9gggpqx9g5qc7qgq-5173.app.github.dev",
+    origin: url_origen,
     credentials: true,
   })
 );
 
 app.use("/api/auth", authRoutes);
-
-console.log(`Servidor escuchando en el puerto ${PORT}`);
 
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
