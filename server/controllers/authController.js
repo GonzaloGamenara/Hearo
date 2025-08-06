@@ -76,18 +76,17 @@ export async function handleLoginOrRegister(req, res) {
       const cookieOption = {
         httpOnly: true,
         sameSite: "Lax",
+        path: "/",
         expires: new Date(
           Date.now() +
             Number(process.env.JWT_COOKIE_EXPIRES) * 24 * 60 * 60 * 1000
         ),
-        path: "/",
       };
       res.cookie("jwt", token, cookieOption);
 
-      return res.send({
+      return res.status(200).json({
         status: "ok",
         message: "Usuario logueado exitosamente",
-        redirect: "/home",
       });
     }
   } catch (error) {
@@ -107,5 +106,8 @@ export function LogOut(req, res) {
 }
 
 export function checkAuth(req, res) {
-  return res.status(200).json({ status: "ok", user: req.user });
+  return res.status(200).json({
+    status: "ok",
+    user: req.user,
+  });
 }

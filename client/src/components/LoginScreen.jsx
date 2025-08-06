@@ -34,8 +34,9 @@ export function LoginScreen() {
         const res = await axios.post(`${API_URL}/auth/login`, form, {
           withCredentials: true,
         });
-        console.log(res.data.message);
-        navigate("/home");
+        if(res.data.status === "ok"){
+          navigate("/home");
+        }
       } catch (error) {
         console.error("Error al iniciar sesion:", error);
         setErrorMessage(error.response.data.message);

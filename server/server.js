@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import { connectDB } from "./config/db.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 const url_origen = "https://urban-zebra-9gggpqx9g5qc7qgq-5173.app.github.dev";
 
@@ -14,6 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(
   cors({
