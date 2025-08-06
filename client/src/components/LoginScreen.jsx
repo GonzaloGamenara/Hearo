@@ -34,7 +34,7 @@ export function LoginScreen() {
         const res = await axios.post(`${API_URL}/auth/login`, form, {
           withCredentials: true,
         });
-        if(res.data.status === "ok"){
+        if (res.data.status === "ok") {
           navigate("/home");
         }
       } catch (error) {
@@ -144,6 +144,12 @@ export function LoginScreen() {
         {openRegister && (
           <div className="contenedor_registro_fondo">
             <div className="contenedor_registro">
+              <button
+                className="cancel_register"
+                onClick={() => setOpenRegister(false)}
+              >
+                ✖️
+              </button>
               <h2>Completar Registro</h2>
               <form>
                 <div className="registro_input_data">

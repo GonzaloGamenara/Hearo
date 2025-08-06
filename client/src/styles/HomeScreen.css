@@ -1,17 +1,46 @@
 .home_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--c1);
+  border-radius: 1rem;
+  padding: 3rem 2rem;
+  width: 20%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .home_title {
-  font-size: 4rem;
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin: 0;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6), 0 4px 10px rgba(0, 0, 0, 0.4),
+    0 0 10px var(--c2), 0 0 5px var(--c1);
+  font-family: var(--primary-font);
+  text-align: center;
 }
 
 .home_subtitle {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--c2);
+  font-family: var(--primary-font);
+  text-align: center;
+  margin: 0;
+}
+
+.user_color {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid var(--c2);
+  animation: pulse 2s infinite ease-in-out;
 }
 
 .home_button_panel {
@@ -20,33 +49,72 @@
   gap: 1rem;
   align-items: center;
   justify-content: center;
-  width: 20%;
+  width: 100%;
 }
 
 .home_button_panel button {
   height: 3rem;
-  width: 15rem;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #09271c;
-  color: #99ed8d;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: var(--c2);
+  color: var(--c1);
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  font-family: var(--primary-font);
+  line-height: 100%;
 }
 
 .home_button_panel button:hover {
-  background-color: #4fbf55;
-  color: #fff;
-  scale: 1.1;
-  transition: background-color 0.3s, color 0.3s, scale 0.2s;
+  background-color: var(--c1);
+  color: var(--c2);
+  transform: scale(1.02);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  filter: brightness(0.95);
 }
 
 .home_footer_note {
   font-size: 0.8rem;
-  text-align: center;
   font-style: italic;
+  font-weight: bold;
+  text-align: center;
+  color: var(--c2);
+  font-family: var(--primary-font);
+}
+
+.logOutButton {
+  height: 100%;
+  width: 100%;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-color: var(--c2);
+  color: var(--c1);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  font-family: var(--primary-font);
+  line-height: 100%;
+  align-content: center;
+  max-width: 50%;
+}
+
+.logOutButton:hover {
+  background-color: var(--c1);
+  color: var(--c2);
+  transform: scale(1.02);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  filter: brightness(0.95);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
 }

@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
+import songsRoutes from "./routes/songsRoutes.js";
 import { connectDB } from "./config/db.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -25,6 +26,7 @@ app.use(
 );
 
 app.use("/api/auth", authRoutes);
+app.use("/api/songs", songsRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);

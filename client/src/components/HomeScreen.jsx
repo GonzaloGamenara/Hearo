@@ -20,8 +20,6 @@ export function HomeScreen() {
       <h1 className="home_title">🎧 Hearo</h1>
       <h2 className="home_subtitle">¡Bienvenido {user?.nick || "jugador"}!</h2>
 
-      <div className="user_color" style={{ backgroundColor: user?.color }} />
-
       <div className="home_button_panel">
         <button onClick={() => navigate("/solo")}>🎧 Jugar en solitario</button>
         <button onClick={() => navigate("/multiplayer")}>
@@ -34,7 +32,9 @@ export function HomeScreen() {
       <p className="home_footer_note">
         Tu progreso se guardará automáticamente.
       </p>
-      <button onClick={handleLogout}>Cerrar Sesion</button>
+      <button className="logOutButton" onClick={handleLogout}>
+        Cerrar Sesion
+      </button>
     </div>
   );
 }
